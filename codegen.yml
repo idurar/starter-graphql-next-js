@@ -1,0 +1,7 @@
+overwrite: true
+schema: 'backend/graphql/schema.graphql'
+documents: null
+generates:
+  backend/graphql/generated/schemaType.ts:
+    plugins:
+      - 'typescript'

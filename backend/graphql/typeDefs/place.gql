@@ -1,0 +1,26 @@
+type Place {
+  id: ID
+  owner: User
+  desciption: String
+  mainPhoto: String
+  photos: [String]
+  priceByNight: Float
+  reviews: [Review]
+}
+
+input inputPlaceType {
+  type: String
+  desciption: String
+  mainPhoto: String
+  photos: [String]
+  priceByNight: Float
+}
+
+type Mutation {
+  addPlace(body: inputPlaceType): Place
+}
+
+type Query {
+  placeList: [Place]
+  place(id: ID): Place
+}
