@@ -1,5 +1,5 @@
 type Review {
-  id: ID
+  _id: ID!
   author: User
   feedback: String
   rate: Float
@@ -7,11 +7,11 @@ type Review {
 }
 
 type Query {
-  reviewByUser(id: ID): [Review]
+  reviewByUser(_id: ID): [Review]
 }
 
 input inputReviewType {
-  id: ID
+  _id: ID
   feedback: String
   rate: Float
   place: ID

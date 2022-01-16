@@ -19,16 +19,16 @@
     "@graphql-codegen/cli": "^2.3.1",
     "@graphql-codegen/typescript": "^2.4.2",
     "apollo-server-micro": "^3.5.0",
-    "fast-graphql": "^1.1.1",
+    "fast-graphql": "^2.0.2",
     "graphql": "^16.1.0",
     "micro": "^9.3.4",
     "mongoose": "^6.1.6",
+    "mongoose-autopopulate": "^0.16.0",
     "next": "12.0.4",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@types/mongoose": "^5.11.97",
     "@types/node": "16.11.7",
     "@types/react": "17.0.35",
     "eslint": "7.32.0",

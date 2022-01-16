@@ -1,5 +1,5 @@
 type Place {
-  id: ID
+  _id: ID!
   owner: User
   desciption: String
   mainPhoto: String
@@ -22,5 +22,5 @@ type Mutation {
 
 type Query {
   placeList: [Place]
-  place(id: ID): Place
+  place(_id: ID): Place
 }

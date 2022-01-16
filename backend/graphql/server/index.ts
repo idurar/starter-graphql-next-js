@@ -6,6 +6,8 @@ import { createContext } from '@/backend/graphql/context';
 import typeDefs from '@/backend/graphql/typeDefs';
 import resolvers from '@/backend/graphql/resolvers';
 
+import connectToDatabase from '@/backend/database/connectToDatabase';
+
 const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
@@ -30,6 +32,7 @@ export default async function graphqlServer({
     return false;
   }
 
+  await connectToDatabase();
   await startServer;
   await apolloServer.createHandler({
     path: '/api/graphql',
