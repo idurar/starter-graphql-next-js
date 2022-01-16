@@ -2,7 +2,7 @@ import { connect } from 'mongoose';
 
 const MONGODB_URI: string = process.env.MONGODB_URI || '';
 
-if (!MONGODB_URI) {
+if (MONGODB_URI === '') {
   throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
 }
 
@@ -37,7 +37,7 @@ async function connectToDatabase() {
     });
   }
   cached.conn = await cached.promise;
-  console.log('🚀 Next.js Connected to MongoDb');
+  console.log('🚀 Next.js Connected to MongoDb Database');
   return cached.conn;
 }
 

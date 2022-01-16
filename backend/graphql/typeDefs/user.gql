@@ -1,20 +1,20 @@
 type User {
-  id: ID!
+  _id: ID!
   name: String
-  email: String!
-  photo: String!
+  email: String
+  photo: String
 }
 
 input inputUserType {
-  name: String!
-  email: String!
+  name: String
+  email: String
 }
 
 type Query {
-  userList: [User!]!
-  user(id: ID!): User!
+  userList: [User]
+  user(_id: ID): User
 }
 
 type Mutation {
-  addUser(body: inputUserType): User!
+  addUser(body: inputUserType): User
 }

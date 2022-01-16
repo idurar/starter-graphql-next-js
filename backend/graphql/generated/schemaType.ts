@@ -16,7 +16,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   addPlace?: Maybe<Place>;
   addReview?: Maybe<Review>;
-  addUser: User;
+  addUser?: Maybe<User>;
 };
 
 
@@ -36,8 +36,8 @@ export type MutationAddUserArgs = {
 
 export type Place = {
   __typename?: 'Place';
+  _id: Scalars['ID'];
   desciption?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['ID']>;
   mainPhoto?: Maybe<Scalars['String']>;
   owner?: Maybe<User>;
   photos?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -50,40 +50,40 @@ export type Query = {
   place?: Maybe<Place>;
   placeList?: Maybe<Array<Maybe<Place>>>;
   reviewByUser?: Maybe<Array<Maybe<Review>>>;
-  user: User;
-  userList: Array<User>;
+  user?: Maybe<User>;
+  userList?: Maybe<Array<Maybe<User>>>;
 };
 
 
 export type QueryPlaceArgs = {
-  id?: InputMaybe<Scalars['ID']>;
+  _id?: InputMaybe<Scalars['ID']>;
 };
 
 
 export type QueryReviewByUserArgs = {
-  id?: InputMaybe<Scalars['ID']>;
+  _id?: InputMaybe<Scalars['ID']>;
 };
 
 
 export type QueryUserArgs = {
-  id: Scalars['ID'];
+  _id?: InputMaybe<Scalars['ID']>;
 };
 
 export type Review = {
   __typename?: 'Review';
+  _id: Scalars['ID'];
   author?: Maybe<User>;
   feedback?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['ID']>;
   place?: Maybe<Scalars['ID']>;
   rate?: Maybe<Scalars['Float']>;
 };
 
 export type User = {
   __typename?: 'User';
-  email: Scalars['String'];
-  id: Scalars['ID'];
+  _id: Scalars['ID'];
+  email?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
-  photo: Scalars['String'];
+  photo?: Maybe<Scalars['String']>;
 };
 
 export type InputPlaceType = {
@@ -95,13 +95,13 @@ export type InputPlaceType = {
 };
 
 export type InputReviewType = {
+  _id?: InputMaybe<Scalars['ID']>;
   feedback?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['ID']>;
   place?: InputMaybe<Scalars['ID']>;
   rate?: InputMaybe<Scalars['Float']>;
 };
 
 export type InputUserType = {
-  email: Scalars['String'];
-  name: Scalars['String'];
+  email?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
 };
