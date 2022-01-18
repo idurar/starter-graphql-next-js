@@ -1,14 +1,15 @@
 import { resolverType } from 'fast-graphql';
 import { users } from '@/backend/data';
+import userController from '@/backend/controllers/userController';
 import * as schemaType from '@/backend/graphql/generated/schemaType';
 
 const Query = {
-  userList: (parent: any, args: any, ctx: any) => {
-    return users;
+  userList: async (parent: any, args: any, ctx: any) => {
+    return await userController.list();
   },
 
   user: (parent: any, args: any, ctx: any) => {
-    return users.find((x) => x.id == args.id);
+    return users.find((x) => x._id == args._id);
   },
 };
 

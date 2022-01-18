@@ -1,15 +1,16 @@
-import { Schema, model } from 'mongoose';
+import mongoose, { Schema, model } from 'mongoose';
+
 // const bcrypt = require('bcryptjs');
 
-import * as schemaType from '@/backend/graphql/generated/schemaType';
+// import * as schemaType from '@/backend/graphql/generated/schemaType';
 
-const schema = new Schema<schemaType.User>({
+const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
-  photo: String,
+  photo: { type: String, required: false },
 });
 
-export const UserModel = model<schemaType.User>('User', schema);
+export default mongoose.models.User || mongoose.model('User', userSchema);
 
 // // generating a hash
 // adminSchema.methods.generateHash = function (password) {

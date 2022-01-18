@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 import * as schemaType from '@/backend/graphql/generated/schemaType';
 
 // 2. Create a Schema corresponding to the document interface.
-const schema = new Schema<schemaType.Review>({
+const reviewSchema = new Schema<schemaType.Review>({
   author: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
@@ -17,4 +17,4 @@ const schema = new Schema<schemaType.Review>({
   },
 });
 
-export const ReviewModel = model<schemaType.Review>('Review', schema);
+export const Review = model<schemaType.Review>('Review', reviewSchema);

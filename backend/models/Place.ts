@@ -3,7 +3,7 @@ import * as schemaType from '@/backend/graphql/generated/schemaType';
 // const bcrypt = require('bcryptjs');
 
 // 2. Create a Schema corresponding to the document interface.
-const schema = new Schema<schemaType.Place>({
+const placeSchema = new Schema<schemaType.Place>({
   owner: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
@@ -26,10 +26,10 @@ const schema = new Schema<schemaType.Place>({
   ],
 });
 
-schema.plugin(require('mongoose-autopopulate'));
+placeSchema.plugin(require('mongoose-autopopulate'));
 
 // 3. Create a Model.
-export const PlaceModel = model<schemaType.Place>('Place', schema);
+export const Place = model<schemaType.Place>('Place', placeSchema);
 
 // // generating a hash
 // adminSchema.methods.generateHash = function (password) {

@@ -4,17 +4,20 @@ import { places } from '@/backend/data';
 import * as schema from '@/backend/graphql/generated/schemaType';
 
 const Query = {
-  placeList: (parent: any, args: any, ctx: any): schema.Query['placeList'] => {
-    return places;
+  placeList: async (parent: any, args: any, ctx: any): Promise<schema.Query['placeList']> => {
+    return null;
   },
 
-  place: (parent: any, args: any, ctx: any) => {
-    return places.find((x) => x.id == args.id);
+  place(parent: any, args: any, ctx: any) {
+    console.log('🚀 ~ file: place.ts ~ line 12 ~ place ~ ctx', ctx);
+    console.log('🚀 ~ file: place.ts ~ line 12 ~ place ~ parent', parent);
+    console.log('🚀 ~ file: place.ts ~ line 8 ~ placeList: ~ args', args);
+    return places.find((x) => x._id == args._id);
   },
 };
 
 const Mutation = {
-  addPlace: (parent: any, args: any, ctx: any) => {
+  placeCreate: (parent: any, args: any, ctx: any) => {
     return { title: 'this is addPlace mutuation' };
   },
 };
