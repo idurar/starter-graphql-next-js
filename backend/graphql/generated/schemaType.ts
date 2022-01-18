@@ -14,14 +14,11 @@ export type Scalars = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  addPlace?: Maybe<Place>;
   addReview?: Maybe<Review>;
   addUser?: Maybe<User>;
-};
-
-
-export type MutationAddPlaceArgs = {
-  body?: InputMaybe<InputPlaceType>;
+  placeCreate?: Maybe<Place>;
+  placeDelete?: Maybe<Place>;
+  placeUpdate?: Maybe<Place>;
 };
 
 
@@ -32,6 +29,21 @@ export type MutationAddReviewArgs = {
 
 export type MutationAddUserArgs = {
   body?: InputMaybe<InputUserType>;
+};
+
+
+export type MutationPlaceCreateArgs = {
+  body?: InputMaybe<InputPlaceType>;
+};
+
+
+export type MutationPlaceDeleteArgs = {
+  _id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type MutationPlaceUpdateArgs = {
+  body?: InputMaybe<InputPlaceType>;
 };
 
 export type Place = {
@@ -45,10 +57,16 @@ export type Place = {
   reviews?: Maybe<Array<Maybe<Review>>>;
 };
 
+export type PlacePagination = {
+  __typename?: 'PlacePagination';
+  edges?: Maybe<Array<Maybe<Place>>>;
+  pagination?: Maybe<PaginationInfo>;
+};
+
 export type Query = {
   __typename?: 'Query';
   place?: Maybe<Place>;
-  placeList?: Maybe<Array<Maybe<Place>>>;
+  placeList?: Maybe<PlacePagination>;
   reviewByUser?: Maybe<Array<Maybe<Review>>>;
   user?: Maybe<User>;
   userList?: Maybe<Array<Maybe<User>>>;
@@ -57,6 +75,11 @@ export type Query = {
 
 export type QueryPlaceArgs = {
   _id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryPlaceListArgs = {
+  page?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -104,4 +127,11 @@ export type InputReviewType = {
 export type InputUserType = {
   email?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+};
+
+export type PaginationInfo = {
+  __typename?: 'paginationInfo';
+  count?: Maybe<Scalars['Int']>;
+  page?: Maybe<Scalars['Int']>;
+  pages?: Maybe<Scalars['Int']>;
 };

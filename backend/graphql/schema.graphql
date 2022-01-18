@@ -17,11 +17,23 @@ input inputPlaceType {
 }
 
 type Mutation {
-  addPlace(body: inputPlaceType): Place
+  placeCreate(body: inputPlaceType): Place
+  placeUpdate(body: inputPlaceType): Place
+  placeDelete(_id: ID): Place
 }
 
+type paginationInfo {
+  page: Int
+  pages: Int
+  count: Int
+}
+
+type PlacePagination {
+  edges: [Place]
+  pagination: paginationInfo
+}
 type Query {
-  placeList: [Place]
+  placeList(page: Int): PlacePagination
   place(_id: ID): Place
 }
  type Review {
