@@ -1,3 +1,16 @@
+export type listArgsType = {
+  page?: string | number;
+  limit?: string | number;
+  sortBy?: string;
+  sortOrder?: 'desc' | 'asc';
+};
+
+export type searchArgsType = {
+  query?: string;
+  fields?: string;
+  limit?: string | number;
+};
+
 export interface edgesType<T> {
   edges: T[] | [];
   pagination: {
@@ -8,10 +21,10 @@ export interface edgesType<T> {
 }
 
 export interface crudControllerType<T> {
-  read: (args: any) => Promise<T | null>;
-  create: (args: any) => Promise<T | null>;
-  update: (args: any) => Promise<T | null>;
-  delete: (args: any) => Promise<T | null>;
-  list: (args: any) => Promise<edgesType<T>>;
-  search: (args: any) => Promise<T[] | []>;
+  read: (args: { _id: string }) => Promise<T | null>;
+  create: (args: { body: Partial<T> }) => Promise<T | null>;
+  update: (args: { _id: string; body: Partial<T> }) => Promise<T | null>;
+  delete: (args: { _id: string }) => Promise<T | null>;
+  list: (args: listArgsType) => Promise<edgesType<T>>;
+  search: (args: searchArgsType) => Promise<T[] | []>;
 }

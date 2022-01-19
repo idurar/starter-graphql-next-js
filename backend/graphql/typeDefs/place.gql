@@ -9,17 +9,18 @@ type Place {
 }
 
 input inputPlaceType {
-  type: String
-  desciption: String
-  mainPhoto: String
-  photos: [String]
-  priceByNight: Float
+  type: String!
+  owner: ID!
+  desciption: String!
+  mainPhoto: String!
+  photos: [String]!
+  priceByNight: Float!
 }
 
 type Mutation {
-  createPlace(body: inputPlaceType): Place
-  updatePlace(_id: ID, body: inputPlaceType): Place
-  deletePlace(_id: ID): Place
+  createPlace(body: inputPlaceType!): Place
+  updatePlace(_id: ID!, body: inputPlaceType!): Place
+  deletePlace(_id: ID!): Place
 }
 
 type PaginationType {
@@ -33,7 +34,21 @@ type PlaceEdgesType {
   pagination: PaginationType
 }
 
+type listArgsType {
+  page: Int
+  limit: Int
+  sortBy: String
+  sortOrder: String
+}
+
+type searchArgsType {
+  limit: Int
+  query: String!
+  fields: String!
+}
+
 type Query {
-  listPlace(page: Int): PlaceEdgesType
-  readPlace(_id: ID): Place
+  readPlace(_id: ID!): Place
+  listPlace(page: Int, limit: Int, sortBy: String, sortOrder: String): PlaceEdgesType
+  searchPlace(limit: Int, query: String!, fields: String!): [Place]
 }

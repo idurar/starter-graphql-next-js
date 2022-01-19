@@ -11,12 +11,44 @@ type Query {
 }
 
 input inputReviewType {
-  _id: ID
+  author: ID!
   feedback: String
-  rate: Float
-  place: ID
+  rate: Float!
+  place: ID!
 }
 
 type Mutation {
-  addReview(body: inputReviewType): Review
+  createReview(body: inputReviewType!): Review
+  updateReview(_id: ID!, body: inputReviewType!): Review
+  deleteReview(_id: ID!): Review
+}
+
+type PaginationType {
+  page: Int
+  pages: Int
+  count: Int
+}
+
+type ReviewEdgesType {
+  edges: [Review]
+  pagination: PaginationType
+}
+
+type listArgsType {
+  page: Int
+  limit: Int
+  sortBy: String
+  sortOrder: String
+}
+
+type searchArgsType {
+  limit: Int
+  query: String!
+  fields: String!
+}
+
+type Query {
+  readReview(_id: ID!): Review
+  listReview(page: Int, limit: Int, sortBy: String, sortOrder: String): ReviewEdgesType
+  searchReview(limit: Int, query: String!, fields: String!): [Review]
 }

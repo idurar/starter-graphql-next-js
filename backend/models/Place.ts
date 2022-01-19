@@ -1,10 +1,10 @@
-import { Schema, model, models } from 'mongoose';
+import mongoose, { Schema, model, models } from 'mongoose';
 import * as schemaType from '@/backend/graphql/generated/schemaType';
 
 // 2. Create a Schema corresponding to the document interface.
 const PlaceSchema = new Schema<schemaType.Place>({
   owner: {
-    type: mongoose.Schema.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     autopopulate: true,
   },
@@ -18,7 +18,7 @@ const PlaceSchema = new Schema<schemaType.Place>({
   priceByNight: Number,
   reviews: [
     {
-      type: mongoose.Schema.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Review',
       autopopulate: true,
     },
