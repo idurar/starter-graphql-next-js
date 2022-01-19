@@ -3,7 +3,7 @@ import { reviews } from '@/backend/data';
 
 const Query = {
   reviewByUser: (parent: any, args: any, ctx: any) => {
-    return reviews.filter((x) => x.id == args.id);
+    return reviews.filter((x) => x._id == args.id);
   },
 };
 
