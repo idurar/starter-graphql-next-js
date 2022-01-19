@@ -46,6 +46,13 @@ export type MutationPlaceUpdateArgs = {
   body?: InputMaybe<InputPlaceType>;
 };
 
+export type PaginationType = {
+  __typename?: 'PaginationType';
+  count?: Maybe<Scalars['Int']>;
+  page?: Maybe<Scalars['Int']>;
+  pages?: Maybe<Scalars['Int']>;
+};
+
 export type Place = {
   __typename?: 'Place';
   _id: Scalars['ID'];
@@ -69,7 +76,7 @@ export type Query = {
   placeList?: Maybe<PlacePagination>;
   reviewByUser?: Maybe<Array<Maybe<Review>>>;
   user?: Maybe<User>;
-  userList?: Maybe<Array<Maybe<User>>>;
+  userList?: Maybe<UserEdgesType>;
 };
 
 
@@ -107,6 +114,12 @@ export type User = {
   email?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   photo?: Maybe<Scalars['String']>;
+};
+
+export type UserEdgesType = {
+  __typename?: 'UserEdgesType';
+  edges?: Maybe<Array<Maybe<User>>>;
+  pagination?: Maybe<PaginationType>;
 };
 
 export type InputPlaceType = {
