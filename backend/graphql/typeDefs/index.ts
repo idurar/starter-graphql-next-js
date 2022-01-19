@@ -9,32 +9,48 @@ export default `type Place {
 }
 
 input inputPlaceType {
-  type: String
-  desciption: String
-  mainPhoto: String
-  photos: [String]
-  priceByNight: Float
+  type: String!
+  owner: ID!
+  desciption: String!
+  mainPhoto: String!
+  photos: [String]!
+  priceByNight: Float!
 }
 
 type Mutation {
-  placeCreate(body: inputPlaceType): Place
-  placeUpdate(body: inputPlaceType): Place
-  placeDelete(_id: ID): Place
+  createPlace(body: inputPlaceType!): Place
+  updatePlace(_id: ID!, body: inputPlaceType!): Place
+  deletePlace(_id: ID!): Place
 }
 
-type paginationInfo {
+type PaginationType {
   page: Int
   pages: Int
   count: Int
 }
 
-type PlacePagination {
+type PlaceEdgesType {
   edges: [Place]
-  pagination: paginationInfo
+  pagination: PaginationType
 }
+
+type listArgsType {
+  page: Int
+  limit: Int
+  sortBy: String
+  sortOrder: String
+}
+
+type searchArgsType {
+  limit: Int
+  query: String!
+  fields: String!
+}
+
 type Query {
-  placeList(page: Int): PlacePagination
-  place(_id: ID): Place
+  readPlace(_id: ID!): Place
+  listPlace(page: Int, limit: Int, sortBy: String, sortOrder: String): PlaceEdgesType
+  searchPlace(limit: Int, query: String!, fields: String!): [Place]
 }
  type Review {
   _id: ID!
@@ -49,14 +65,46 @@ type Query {
 }
 
 input inputReviewType {
-  _id: ID
+  author: ID!
   feedback: String
-  rate: Float
-  place: ID
+  rate: Float!
+  place: ID!
 }
 
 type Mutation {
-  addReview(body: inputReviewType): Review
+  createReview(body: inputReviewType!): Review
+  updateReview(_id: ID!, body: inputReviewType!): Review
+  deleteReview(_id: ID!): Review
+}
+
+type PaginationType {
+  page: Int
+  pages: Int
+  count: Int
+}
+
+type ReviewEdgesType {
+  edges: [Review]
+  pagination: PaginationType
+}
+
+type listArgsType {
+  page: Int
+  limit: Int
+  sortBy: String
+  sortOrder: String
+}
+
+type searchArgsType {
+  limit: Int
+  query: String!
+  fields: String!
+}
+
+type Query {
+  readReview(_id: ID!): Review
+  listReview(page: Int, limit: Int, sortBy: String, sortOrder: String): ReviewEdgesType
+  searchReview(limit: Int, query: String!, fields: String!): [Review]
 }
  type User {
   _id: ID!
@@ -66,27 +114,43 @@ type Mutation {
 }
 
 input inputUserType {
-  name: String
-  email: String
+  name: String!
+  email: String!
+}
+
+type Mutation {
+  createUser(body: inputUserType!): User
+  updateUser(_id: ID!, body: inputUserType!): User
+  deleteUser(_id: ID!): User
 }
 
 type PaginationType {
-  page: Int
-  pages: Int
-  count: Int
+  page: Int!
+  pages: Int!
+  count: Int!
 }
 
 type UserEdgesType {
   edges: [User]
-  pagination: PaginationType
+  pagination: PaginationType!
+}
+
+type listArgsType {
+  page: Int
+  limit: Int
+  sortBy: String
+  sortOrder: String
+}
+
+type searchArgsType {
+  limit: Int
+  query: String!
+  fields: String!
 }
 
 type Query {
-  userList: UserEdgesType
-  user(_id: ID): User
-}
-
-type Mutation {
-  addUser(body: inputUserType): User
+  readUser(_id: ID!): User
+  listUser(page: Int, limit: Int, sortBy: String, sortOrder: String): UserEdgesType
+  searchUser(limit: Int, query: String!, fields: String!): [User]
 }
 `;

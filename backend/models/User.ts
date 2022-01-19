@@ -1,4 +1,4 @@
-import { Schema, model, models } from 'mongoose';
+import mongoose, { Schema, model, models } from 'mongoose';
 import * as schemaType from '@/backend/graphql/generated/schemaType';
 // const bcrypt = require('bcryptjs');
 

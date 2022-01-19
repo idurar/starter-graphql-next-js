@@ -6,26 +6,42 @@ type User {
 }
 
 input inputUserType {
-  name: String
-  email: String
+  name: String!
+  email: String!
+}
+
+type Mutation {
+  createUser(body: inputUserType!): User
+  updateUser(_id: ID!, body: inputUserType!): User
+  deleteUser(_id: ID!): User
 }
 
 type PaginationType {
-  page: Int
-  pages: Int
-  count: Int
+  page: Int!
+  pages: Int!
+  count: Int!
 }
 
 type UserEdgesType {
   edges: [User]
-  pagination: PaginationType
+  pagination: PaginationType!
+}
+
+type listArgsType {
+  page: Int
+  limit: Int
+  sortBy: String
+  sortOrder: String
+}
+
+type searchArgsType {
+  limit: Int
+  query: String!
+  fields: String!
 }
 
 type Query {
-  userList: UserEdgesType
-  user(_id: ID): User
-}
-
-type Mutation {
-  addUser(body: inputUserType): User
+  readUser(_id: ID!): User
+  listUser(page: Int, limit: Int, sortBy: String, sortOrder: String): UserEdgesType
+  searchUser(limit: Int, query: String!, fields: String!): [User]
 }
