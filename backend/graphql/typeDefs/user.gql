@@ -5,14 +5,14 @@ type User {
   photo: String
 }
 
-input inputUserType {
+input InputUserType {
   name: String!
   email: String!
 }
 
 type Mutation {
-  createUser(body: inputUserType!): User
-  updateUser(_id: ID!, body: inputUserType!): User
+  createUser(body: InputUserType!): User
+  updateUser(_id: ID!, body: InputUserType!): User
   deleteUser(_id: ID!): User
 }
 
@@ -25,19 +25,6 @@ type PaginationType {
 type UserEdgesType {
   edges: [User]
   pagination: PaginationType!
-}
-
-type listArgsType {
-  page: Int
-  limit: Int
-  sortBy: String
-  sortOrder: String
-}
-
-type searchArgsType {
-  limit: Int
-  query: String!
-  fields: String!
 }
 
 type Query {

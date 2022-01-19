@@ -8,7 +8,7 @@ type Place {
   reviews: [Review]
 }
 
-input inputPlaceType {
+input InputPlaceType {
   type: String!
   owner: ID!
   desciption: String!
@@ -18,8 +18,8 @@ input inputPlaceType {
 }
 
 type Mutation {
-  createPlace(body: inputPlaceType!): Place
-  updatePlace(_id: ID!, body: inputPlaceType!): Place
+  createPlace(body: InputPlaceType!): Place
+  updatePlace(_id: ID!, body: InputPlaceType!): Place
   deletePlace(_id: ID!): Place
 }
 
@@ -32,19 +32,6 @@ type PaginationType {
 type PlaceEdgesType {
   edges: [Place]
   pagination: PaginationType
-}
-
-type listArgsType {
-  page: Int
-  limit: Int
-  sortBy: String
-  sortOrder: String
-}
-
-type searchArgsType {
-  limit: Int
-  query: String!
-  fields: String!
 }
 
 type Query {

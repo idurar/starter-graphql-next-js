@@ -8,7 +8,7 @@ export default `type Place {
   reviews: [Review]
 }
 
-input inputPlaceType {
+input InputPlaceType {
   type: String!
   owner: ID!
   desciption: String!
@@ -18,8 +18,8 @@ input inputPlaceType {
 }
 
 type Mutation {
-  createPlace(body: inputPlaceType!): Place
-  updatePlace(_id: ID!, body: inputPlaceType!): Place
+  createPlace(body: InputPlaceType!): Place
+  updatePlace(_id: ID!, body: InputPlaceType!): Place
   deletePlace(_id: ID!): Place
 }
 
@@ -32,19 +32,6 @@ type PaginationType {
 type PlaceEdgesType {
   edges: [Place]
   pagination: PaginationType
-}
-
-type listArgsType {
-  page: Int
-  limit: Int
-  sortBy: String
-  sortOrder: String
-}
-
-type searchArgsType {
-  limit: Int
-  query: String!
-  fields: String!
 }
 
 type Query {
@@ -64,7 +51,7 @@ type Query {
   reviewByUser(_id: ID): [Review]
 }
 
-input inputReviewType {
+input InputReviewType {
   author: ID!
   feedback: String
   rate: Float!
@@ -72,8 +59,8 @@ input inputReviewType {
 }
 
 type Mutation {
-  createReview(body: inputReviewType!): Review
-  updateReview(_id: ID!, body: inputReviewType!): Review
+  createReview(body: InputReviewType!): Review
+  updateReview(_id: ID!, body: InputReviewType!): Review
   deleteReview(_id: ID!): Review
 }
 
@@ -88,19 +75,6 @@ type ReviewEdgesType {
   pagination: PaginationType
 }
 
-type listArgsType {
-  page: Int
-  limit: Int
-  sortBy: String
-  sortOrder: String
-}
-
-type searchArgsType {
-  limit: Int
-  query: String!
-  fields: String!
-}
-
 type Query {
   readReview(_id: ID!): Review
   listReview(page: Int, limit: Int, sortBy: String, sortOrder: String): ReviewEdgesType
@@ -113,14 +87,14 @@ type Query {
   photo: String
 }
 
-input inputUserType {
+input InputUserType {
   name: String!
   email: String!
 }
 
 type Mutation {
-  createUser(body: inputUserType!): User
-  updateUser(_id: ID!, body: inputUserType!): User
+  createUser(body: InputUserType!): User
+  updateUser(_id: ID!, body: InputUserType!): User
   deleteUser(_id: ID!): User
 }
 
@@ -133,19 +107,6 @@ type PaginationType {
 type UserEdgesType {
   edges: [User]
   pagination: PaginationType!
-}
-
-type listArgsType {
-  page: Int
-  limit: Int
-  sortBy: String
-  sortOrder: String
-}
-
-type searchArgsType {
-  limit: Int
-  query: String!
-  fields: String!
 }
 
 type Query {
