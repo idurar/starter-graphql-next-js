@@ -10,8 +10,19 @@ input inputUserType {
   email: String
 }
 
+type PaginationType {
+  page: Int
+  pages: Int
+  count: Int
+}
+
+type UserEdgesType {
+  edges: [User]
+  pagination: PaginationType
+}
+
 type Query {
-  userList: [User]
+  userList: UserEdgesType
   user(_id: ID): User
 }
 

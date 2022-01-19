@@ -5,7 +5,7 @@ import * as schemaType from '@/backend/graphql/generated/schemaType';
 
 const Query = {
   userList: async (parent: any, args: any, ctx: any) => {
-    return await userController.list();
+    return await userController.list(args);
   },
 
   user: (parent: any, args: any, ctx: any) => {
