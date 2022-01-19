@@ -1,24 +1,9 @@
 import { Model } from 'mongoose';
 
-interface edgesType<T> {
-  edges: T[] | [];
-  pagination: {
-    page: number;
-    pages: number;
-    count: number;
-  };
-}
-
-interface crudMethodsType<T> {
-  read: (args: any) => Promise<T | null>;
-  create: (args: any) => Promise<T | null>;
-  update: (args: any) => Promise<T | null>;
-  delete: (args: any) => Promise<T | null>;
-  list: (args: any) => Promise<edgesType<T>>;
-}
+import { crudControllerType } from './crudControllerType';
 
 function crudMethods<T>(ModelEntity: Model<T>) {
-  let methods: crudMethodsType<T> = {
+  let methods: crudControllerType<T> = {
     read: async (args) => {
       try {
         // Find document by id
@@ -81,16 +66,21 @@ function crudMethods<T>(ModelEntity: Model<T>) {
     list: async (args) => {
       const page = parseInt(args?.page) || 1;
       const limit = parseInt(args?.limit) || 10;
+      const sortBy = args?.sortBy || 'created';
+      const sortOrder = args?.sortOrder || 'desc';
+
       const skip = page * limit - limit;
       try {
         //  Query the database for a list of all results
-        const resultsPromise = ModelEntity.find().skip(skip).limit(limit).sort({ created: 'desc' });
+        const resultsPromise = ModelEntity.find()
+          .skip(skip)
+          .limit(limit)
+          .sort({ [sortBy]: sortOrder });
         // Counting the total documents
         const countPromise = ModelEntity.count();
         // Resolving both promises
         const [result, count] = await Promise.all([resultsPromise, countPromise]);
-        console.log('🚀 ~ file: crudMethods.js ~ line 71 ~ list: ~ result', result);
-        console.log('🚀 ~ file: crudMethods.js ~ line 71 ~ list: ~ count', count);
+
         // Calculating total pages
         const pages = Math.ceil(count / limit);
         // Getting Pagination Object
@@ -116,6 +106,34 @@ function crudMethods<T>(ModelEntity: Model<T>) {
             count: 0,
           },
         };
+      }
+    },
+
+    search: async (args) => {
+      if (args?.query === undefined || args?.query.trim() === '') {
+        return [];
+      }
+
+      const limit = parseInt(args?.limit) || 10;
+
+      const fieldsArray = args?.fields.split(',');
+
+      const fields: any = { $or: [] };
+
+      for (const field of fieldsArray) {
+        fields.$or.push({ [field]: { $regex: new RegExp(args?.query, 'i') } });
+      }
+
+      try {
+        let results = await Model.find(fields).limit(limit);
+
+        if (results.length >= 1) {
+          return results;
+        } else {
+          return [];
+        }
+      } catch {
+        return [];
       }
     },
   };

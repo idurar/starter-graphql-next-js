@@ -17,22 +17,23 @@ input inputPlaceType {
 }
 
 type Mutation {
-  placeCreate(body: inputPlaceType): Place
-  placeUpdate(body: inputPlaceType): Place
-  placeDelete(_id: ID): Place
+  createPlace(body: inputPlaceType): Place
+  updatePlace(_id: ID, body: inputPlaceType): Place
+  deletePlace(_id: ID): Place
 }
 
-type paginationInfo {
+type PaginationType {
   page: Int
   pages: Int
   count: Int
 }
 
-type PlacePagination {
+type PlaceEdgesType {
   edges: [Place]
-  pagination: paginationInfo
+  pagination: PaginationType
 }
+
 type Query {
-  placeList(page: Int): PlacePagination
-  place(_id: ID): Place
+  listPlace(page: Int): PlaceEdgesType
+  readPlace(_id: ID): Place
 }
