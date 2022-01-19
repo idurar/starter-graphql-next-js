@@ -12,6 +12,27 @@ export type Scalars = {
   Float: number;
 };
 
+export type InputPlaceType = {
+  desciption: Scalars['String'];
+  mainPhoto: Scalars['String'];
+  owner: Scalars['ID'];
+  photos: Array<InputMaybe<Scalars['String']>>;
+  priceByNight: Scalars['Float'];
+  type: Scalars['String'];
+};
+
+export type InputReviewType = {
+  author: Scalars['ID'];
+  feedback?: InputMaybe<Scalars['String']>;
+  place: Scalars['ID'];
+  rate: Scalars['Float'];
+};
+
+export type InputUserType = {
+  email: Scalars['String'];
+  name: Scalars['String'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createPlace?: Maybe<Place>;
@@ -203,40 +224,4 @@ export type UserEdgesType = {
   __typename?: 'UserEdgesType';
   edges?: Maybe<Array<Maybe<User>>>;
   pagination: PaginationType;
-};
-
-export type InputPlaceType = {
-  desciption: Scalars['String'];
-  mainPhoto: Scalars['String'];
-  owner: Scalars['ID'];
-  photos: Array<InputMaybe<Scalars['String']>>;
-  priceByNight: Scalars['Float'];
-  type: Scalars['String'];
-};
-
-export type InputReviewType = {
-  author: Scalars['ID'];
-  feedback?: InputMaybe<Scalars['String']>;
-  place: Scalars['ID'];
-  rate: Scalars['Float'];
-};
-
-export type InputUserType = {
-  email: Scalars['String'];
-  name: Scalars['String'];
-};
-
-export type ListArgsType = {
-  __typename?: 'listArgsType';
-  limit?: Maybe<Scalars['Int']>;
-  page?: Maybe<Scalars['Int']>;
-  sortBy?: Maybe<Scalars['String']>;
-  sortOrder?: Maybe<Scalars['String']>;
-};
-
-export type SearchArgsType = {
-  __typename?: 'searchArgsType';
-  fields: Scalars['String'];
-  limit?: Maybe<Scalars['Int']>;
-  query: Scalars['String'];
 };

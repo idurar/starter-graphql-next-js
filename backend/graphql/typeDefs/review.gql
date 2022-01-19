@@ -10,7 +10,7 @@ type Query {
   reviewByUser(_id: ID): [Review]
 }
 
-input inputReviewType {
+input InputReviewType {
   author: ID!
   feedback: String
   rate: Float!
@@ -18,8 +18,8 @@ input inputReviewType {
 }
 
 type Mutation {
-  createReview(body: inputReviewType!): Review
-  updateReview(_id: ID!, body: inputReviewType!): Review
+  createReview(body: InputReviewType!): Review
+  updateReview(_id: ID!, body: InputReviewType!): Review
   deleteReview(_id: ID!): Review
 }
 
@@ -32,19 +32,6 @@ type PaginationType {
 type ReviewEdgesType {
   edges: [Review]
   pagination: PaginationType
-}
-
-type listArgsType {
-  page: Int
-  limit: Int
-  sortBy: String
-  sortOrder: String
-}
-
-type searchArgsType {
-  limit: Int
-  query: String!
-  fields: String!
 }
 
 type Query {
