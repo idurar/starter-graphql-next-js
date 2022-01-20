@@ -4,25 +4,25 @@ import * as schema from '@/backend/graphql/generated/schemaType';
 
 const Query = {
   async readPlace(parent: any, args: any, ctx: any): Promise<schema.Query['readPlace']> {
-    return await placeController.read(args);
+    return await placeController().read(args);
   },
   async listPlace(parent: any, args: any, ctx: any): Promise<schema.Query['listPlace']> {
-    return await placeController.list(args);
+    return await placeController().list(args);
   },
   async searchPlace(parent: any, args: any, ctx: any): Promise<schema.Query['searchPlace']> {
-    return await placeController.search(args);
+    return await placeController().search(args);
   },
 };
 
 const Mutation = {
   async createPlace(parent: any, args: any, ctx: any): Promise<schema.Mutation['createPlace']> {
-    return await placeController.create(args);
+    return await placeController().create(args);
   },
   async updatePlace(parent: any, args: any, ctx: any): Promise<schema.Mutation['updatePlace']> {
-    return await placeController.update(args);
+    return await placeController().update(args);
   },
   async deletePlace(parent: any, args: any, ctx: any): Promise<schema.Mutation['deletePlace']> {
-    return await placeController.delete(args);
+    return await placeController().delete(args);
   },
 };
 
