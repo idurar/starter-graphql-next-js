@@ -10,7 +10,7 @@ function crudMethods<T>(ModelEntity: Model<T>) {
         if (!args?.body) {
           return null;
         }
-        const result = await ModelEntity.create(args?.body);
+        const result: any = await new ModelEntity(args?.body).save();
         if (!result) {
           return null;
         } else {
