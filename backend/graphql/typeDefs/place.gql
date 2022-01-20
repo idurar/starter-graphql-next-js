@@ -8,31 +8,34 @@ type Place {
   reviews: [Review]
 }
 
-input inputPlaceType {
-  type: String
-  desciption: String
-  mainPhoto: String
-  photos: [String]
-  priceByNight: Float
+input InputPlaceType {
+  type: String!
+  owner: ID!
+  desciption: String!
+  mainPhoto: String!
+  photos: [String]!
+  priceByNight: Float!
 }
 
 type Mutation {
-  placeCreate(body: inputPlaceType): Place
-  placeUpdate(body: inputPlaceType): Place
-  placeDelete(_id: ID): Place
+  createPlace(body: InputPlaceType!): Place
+  updatePlace(_id: ID!, body: InputPlaceType!): Place
+  deletePlace(_id: ID!): Place
 }
 
-type paginationInfo {
+type PaginationType {
   page: Int
   pages: Int
   count: Int
 }
 
-type PlacePagination {
+type PlaceEdgesType {
   edges: [Place]
-  pagination: paginationInfo
+  pagination: PaginationType
 }
+
 type Query {
-  placeList(page: Int): PlacePagination
-  place(_id: ID): Place
+  readPlace(_id: ID!): Place
+  listPlace(page: Int, limit: Int, sortBy: String, sortOrder: String): PlaceEdgesType
+  searchPlace(limit: Int, query: String!, fields: String!): [Place]
 }

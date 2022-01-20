@@ -1,15 +1,28 @@
+import reviewController from '@/backend/controllers/reviewController';
 import { resolverType } from 'fast-graphql';
-import { reviews } from '@/backend/data';
+import * as schema from '@/backend/graphql/generated/schemaType';
 
 const Query = {
-  reviewByUser: (parent: any, args: any, ctx: any) => {
-    return reviews.filter((x) => x._id == args.id);
+  async readReview(parent: any, args: any, ctx: any): Promise<schema.Query['readReview']> {
+    return await reviewController().read(args);
+  },
+  async listReview(parent: any, args: any, ctx: any): Promise<schema.Query['listReview']> {
+    return await reviewController().list(args);
+  },
+  async searchReview(parent: any, args: any, ctx: any): Promise<schema.Query['searchReview']> {
+    return await reviewController().search(args);
   },
 };
 
 const Mutation = {
-  addReview: (parent: any, args: any, ctx: any) => {
-    return { name: 'this is addReview mutuation' };
+  async createReview(parent: any, args: any, ctx: any): Promise<schema.Mutation['createReview']> {
+    return await reviewController().create(args);
+  },
+  async updateReview(parent: any, args: any, ctx: any): Promise<schema.Mutation['updateReview']> {
+    return await reviewController().update(args);
+  },
+  async deleteReview(parent: any, args: any, ctx: any): Promise<schema.Mutation['deleteReview']> {
+    return await reviewController().delete(args);
   },
 };
 
