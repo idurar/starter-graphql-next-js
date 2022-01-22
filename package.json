@@ -16,11 +16,14 @@
     "schema": "node ./scripts/generateSchema"
   },
   "dependencies": {
+    "@apollo/client": "^3.5.7",
     "@graphql-codegen/cli": "^2.3.1",
     "@graphql-codegen/typescript": "^2.4.2",
     "apollo-server-micro": "^3.5.0",
+    "deepmerge": "^4.2.2",
     "fast-graphql": "^2.0.2",
-    "graphql": "^16.1.0",
+    "graphql": "^16.2.0",
+    "lodash": "^4.17.21",
     "micro": "^9.3.4",
     "mongoose": "^6.1.6",
     "mongoose-autopopulate": "^0.16.0",
