@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import styles from '@/styles/Home.module.css';
+import PlaceList from '@/components/PlaceList';
 
 const Home: NextPage = () => {
   return (
@@ -15,12 +16,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1>updated main page</h1>
-        <img
-          src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmVkcm9vbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&h=400&q=60"
-          alt="Image"
-          width={600}
-          height={400}
-        />
+        <PlaceList />
       </main>
 
       <footer className={styles.footer}>
