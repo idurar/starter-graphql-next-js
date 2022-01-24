@@ -10,10 +10,6 @@ const apiURL =
   process.env.NODE_ENV !== 'production'
     ? 'http://localhost:3000/api/graphql'
     : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/graphql`;
-console.log(
-  '🚀 ~ file: index.ts ~ line 13 ~ process.env.NEXT_PUBLIC_VERCEL_URL',
-  process.env.NEXT_PUBLIC_VERCEL_URL
-);
 
 function createApolloClient() {
   return new ApolloClient({

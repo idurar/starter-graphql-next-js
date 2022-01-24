@@ -16,9 +16,11 @@
     "schema": "node ./scripts/generateSchema"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@apollo/client": "^3.5.7",
     "@graphql-codegen/cli": "^2.3.1",
     "@graphql-codegen/typescript": "^2.4.2",
+    "antd": "^4.18.4",
     "apollo-server-micro": "^3.5.0",
     "deepmerge": "^4.2.2",
     "fast-graphql": "^2.0.2",
@@ -28,6 +30,7 @@
     "mongoose": "^6.1.6",
     "mongoose-autopopulate": "^0.16.0",
     "next": "12.0.4",
+    "next-plugin-antd-less": "^1.8.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
@@ -35,6 +38,7 @@
     "@types/lodash": "^4.14.178",
     "@types/node": "16.11.7",
     "@types/react": "17.0.35",
+    "babel-plugin-import": "^1.13.3",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.4",
     "eslint-config-prettier": "^8.3.0",
