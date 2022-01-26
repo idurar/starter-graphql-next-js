@@ -1,4 +1,5 @@
-import '@/styles/app.less';
+import 'antd/dist/antd.css';
+import '@/styles/app.scss';
 import type { AppProps } from 'next/app';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '@/apollo';
