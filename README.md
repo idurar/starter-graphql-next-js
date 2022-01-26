@@ -31,7 +31,7 @@ yarn dev
 ## Try your Graphql
 
 ```
-[http://localhost:3000/api/graphql](http://localhost:3000/api/graphql)
+http://localhost:3000/api/graphql
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
