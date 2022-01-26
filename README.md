@@ -7,6 +7,13 @@
 yarn Install
 ```
 
+## Setup & connect to your MongoDb Database
+
+```
+1) change this file name .env.local.tmp to .env.local
+2) open .env.local and paste your MongoDB url here :  MONGODB_URI="your-mongodb-uri"
+```
+
 ## Generate schema and Type
 
 ```
@@ -19,6 +26,12 @@ First, run the development server:
 
 ```
 yarn dev
+```
+
+## Try your Graphql
+
+```
+[http://localhost:3000/api/graphql](http://localhost:3000/api/graphql)
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
