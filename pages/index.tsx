@@ -4,8 +4,7 @@ import Image from 'next/image';
 import Head from 'next/head';
 import background from '@/styles/images/background.jpg';
 
-import PlaceList from '@/__components/PlaceList';
-import { Row, Image as AntdImage } from 'antd';
+import PlaceList from '@/components/PlaceList';
 
 const Home: NextPage = () => {
   return (
@@ -17,11 +16,18 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <Row>
-          <div style={{ overflow: 'hidden', borderRadius: '10px', height: '600px' }}>
-            <Image src={background} width={1100} height={800} />
-          </div>
-        </Row>
+        <div
+          style={{
+            overflow: 'hidden',
+            borderRadius: '10px',
+            width: '1100px',
+            maxWidth: '100%',
+            height: '600px',
+            margin: '50px auto',
+          }}
+        >
+          <Image src={background} width={'1100'} height={800} />
+        </div>
       </main>
     </div>
   );
