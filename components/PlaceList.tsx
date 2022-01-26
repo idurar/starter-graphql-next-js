@@ -1,6 +1,6 @@
 import { gql, useQuery, NetworkStatus } from '@apollo/client';
 
-import ErrorMessage from '@/__components/ErrorMessage';
+import ErrorMessage from '@/components/ErrorMessage';
 
 export const LIST_PLACE_QUERY = gql`
   query listPlace($page: Int) {
