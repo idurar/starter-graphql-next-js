@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { Avatar, Menu, Dropdown } from 'antd';
+import { Avatar, Menu, Dropdown, Row, Col, Divider } from 'antd';
 
 import {
   AppstoreOutlined,
@@ -10,6 +10,7 @@ import {
   BellOutlined,
 } from '@ant-design/icons';
 import photo from '@/styles/images/photo.png';
+import airbnbLogo from '@/styles/images/airbnb-logo.svg';
 
 import uniqueId from '@/utils/uinqueId';
 
@@ -65,27 +66,34 @@ export default function HeaderContent() {
     </div>
   );
   return (
-    <div className="headerIcon">
-      <Dropdown overlay={profileDropdown} trigger={['click']} placement="bottomRight">
-        {/* <Badge dot> */}
-        <Avatar
-          src={
-            <Image
-              src={photo}
-              alt="Picture of the author"
-              // width={500} automatically provided
-              // height={500} automatically provided
-              // blurDataURL="data:..." automatically provided
-              // placeholder="blur" // Optional blur-up while loading
+    <Row gutter={16}>
+      <Col className="gutter-row" span={18}>
+        <Image src={airbnbLogo} alt="Picture of the author" width={120} height={70} />
+      </Col>
+      <Col className="gutter-row" span={6}>
+        <div className="headerIcon">
+          <Dropdown overlay={profileDropdown} trigger={['click']} placement="bottomRight">
+            {/* <Badge dot> */}
+            <Avatar
+              src={
+                <Image
+                  src={photo}
+                  alt="Picture of the author"
+                  // width={500} automatically provided
+                  // height={500} automatically provided
+                  // blurDataURL="data:..." automatically provided
+                  // placeholder="blur" // Optional blur-up while loading
+                />
+              }
             />
-          }
-        />
-        {/* </Badge> */}
-      </Dropdown>
+            {/* </Badge> */}
+          </Dropdown>
 
-      <Avatar icon={<AppstoreOutlined />} />
+          <Avatar icon={<AppstoreOutlined />} />
 
-      <Avatar icon={<BellOutlined />} />
-    </div>
+          <Avatar icon={<BellOutlined />} />
+        </div>
+      </Col>
+    </Row>
   );
 }
