@@ -1,4 +1,5 @@
 # Generic CRUD with Apollo Graphql Server Next.js and Mongodb Starter
+![background](https://user-images.githubusercontent.com/50052356/151259815-f24bf30a-c78a-4d13-be75-82f1c1c3774a.jpg)
 
 
 ## Install
