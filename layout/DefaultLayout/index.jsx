@@ -1,15 +1,5 @@
 import HeaderContent from '../HeaderContent';
 
-import { Avatar, Menu, Dropdown } from 'antd';
-
-import {
-  AppstoreOutlined,
-  SettingOutlined,
-  MailOutlined,
-  LogoutOutlined,
-  BellOutlined,
-} from '@ant-design/icons';
-import photo from '@/styles/images/photo.png';
 import { Layout } from 'antd';
 
 const { Content } = Layout;
