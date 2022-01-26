@@ -1,6 +1,5 @@
-# Next.js Graphql apollo server starter 
+# Generic CRUD with Apollo Graphql Server Next.js and Mongodb Starter
 
-Next.js Graphql apollo server starter , with merge schema , combine resolvers generate type in fast and simple way
 
 ## Install
 
